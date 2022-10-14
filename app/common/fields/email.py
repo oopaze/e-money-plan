@@ -1,3 +1,4 @@
+from flask import request
 from flask_marshmallow.fields import fields
 from marshmallow import ValidationError, validate
 
@@ -17,5 +18,6 @@ class Email(fields.String):
         super().__init__(*args, **kwargs)
 
     def is_unique(self, email):
-        if not self.repository.check_email_is_unique(email):
+        instance_id = request.view_args.get("id", 0)
+        if not self.repository.check_email_is_unique(email, instance_id):
             raise ValidationError("Email já está em uso")

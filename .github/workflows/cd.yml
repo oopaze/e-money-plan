@@ -1,0 +1,26 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: ['16.13.1']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Run deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: 'c7a33318-609d-46e1-b944-67749a8991a1'
+          heroku_app_name: 'expensies-api'
+          heroku_email: 'pedroosd28@gmail.com'

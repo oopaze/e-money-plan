@@ -6,7 +6,7 @@ run:
 	$(env) $(python) run.py
 
 init_db:
-	$(env) flask db init
+	$(env) flask db init || echo "DB is already started"
 
 migrate:
 	$(env) flask db stamp head 

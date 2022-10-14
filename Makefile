@@ -3,7 +3,7 @@ python = $(env) python
 requirements_path = ./.devops/requirements
 
 run:
-	$(env) flask run
+	$(env) $(python) run.py
 
 init_db:
 	$(env) flask db init

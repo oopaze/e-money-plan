@@ -2,8 +2,8 @@ from flask_marshmallow.fields import fields
 from marshmallow import ValidationError
 
 
-class Price(fields.Decimal):
-    default_error_messages = {"required": "Preço é obrigatório"}
+class Money(fields.Decimal):
+    default_error_messages = {"required": "Este campo é obrigatório"}
 
     def __init__(self, *args, **kwargs):
         validations = kwargs.get("validate", [])
@@ -14,4 +14,4 @@ class Price(fields.Decimal):
 
     def validate_is_positive(self, value):
         if value < 0:
-            raise ValidationError("O preço deve ser 0 ou maior")
+            raise ValidationError("O valor deve ser 0 ou maior")

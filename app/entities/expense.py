@@ -22,9 +22,7 @@ class Expense(db.Model, NumericIdModel, TimeStampedModel):
     paid = sa.Column(sa.Boolean)
 
     profile_id = sa.Column(sa.Integer, sa.ForeignKey("profiles.id"))
-    profile = sa.orm.relationship(
-        "Profile", back_populates="expensies", lazy=True, cascade="all, delete"
-    )
+    profile = sa.orm.relationship("Profile", back_populates="expensies", lazy=True)
 
     def __init__(
         self,

@@ -4,5 +4,5 @@ from flask_sqlalchemy.model import sa
 
 
 class TimeStampedModel:
-    created_at = sa.Column(sa.Datetime, default=datetime.now)
-    updated_at = sa.Column(sa.Datetime, default=datetime.now, onupdate=datetime.now)
+    created_at = sa.Column(sa.DateTime, default=datetime.now)
+    updated_at = sa.Column(sa.DateTime, default=datetime.now, onupdate=datetime.now)

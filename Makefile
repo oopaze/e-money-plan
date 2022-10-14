@@ -15,7 +15,7 @@ migrate:
 upgrade:
 	$(env) flask db upgrade
 
-setup_server: 
+setup_server_db: 
 	flask db stamp head
 	flask db migrate
 	flask db upgrade

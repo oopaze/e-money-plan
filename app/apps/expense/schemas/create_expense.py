@@ -1,12 +1,9 @@
 from marshmallow import Schema, fields
 
-from ....common.fields import Enum, Money, Related
+from ....common.fields import Enum, Money
 from ....entities import Expense
-from ...profile.repositories.profile import profile_repository
 
-default_error_messages = {
-    "required": "Este campo é obrigatório"
-}
+default_error_messages = {"required": "Este campo é obrigatório"}
 
 
 class CreateExpenseSchema(Schema):
@@ -18,4 +15,3 @@ class CreateExpenseSchema(Schema):
     status = Enum(enum=Expense.ExpenseStatus)
     paid = fields.Boolean(required=True, error_messages=default_error_messages)
     is_mine = fields.Boolean(required=True, error_messages=default_error_messages)
-    profile_id = Related(required=True, repository=profile_repository)

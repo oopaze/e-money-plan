@@ -8,9 +8,12 @@ from ..utils.repository import Repository
 
 class UseCase(ABC):
     def __init__(self, repository, output_schema=None, validation_schema=None):
-        self.repository: Repository = repository
+        self.set_repository(repository)
         self.output_schema: SQLAlchemyAutoSchema = output_schema
         self.validation_schema: Schema = validation_schema
+
+    def set_repository(self, repository: Repository):
+        self.repository: Repository = Repository
 
     @abstractmethod
     def execute(self, payload=None, id=None):

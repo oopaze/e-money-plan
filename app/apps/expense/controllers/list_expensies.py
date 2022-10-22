@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask_jwt_extended import jwt_required
 
 from ..repositories.expense import expense_repository
 from ..schemas.show_expense import ShowExpenseSchema
@@ -8,6 +9,7 @@ list_expensies_bp = Blueprint("list_expensies", __name__)
 
 
 @list_expensies_bp.route("/")
+@jwt_required()
 def list_expensies():
 
     output_schema = ShowExpenseSchema()

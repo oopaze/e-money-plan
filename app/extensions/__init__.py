@@ -1,4 +1,5 @@
 from .apps_extension import register_apps
+from .auth_extension import register_jwt
 from .database_extension import register_database
 from .environ_extension import register_environ
 from .error_extension import register_errors
@@ -13,3 +14,4 @@ def register_extensions(app):
     register_migrate(app, app.db)
     register_apps(app)
     register_errors(app)
+    register_jwt(app)

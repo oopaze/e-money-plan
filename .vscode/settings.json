@@ -1,9 +1,8 @@
-
 {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
     "python.terminal.activateEnvironment": true,
-    "python.defaultInterpreterPath": "./.venv/bin/python3.8",
+    "python.defaultInterpreterPath": ".venv/bin/python3",
     "[python]": {
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
@@ -15,7 +14,7 @@
         "100"
     ],
     "files.insertFinalNewline": true,
-    "python.linting.flake8Enabled": true, 
+    "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=100"
     ]

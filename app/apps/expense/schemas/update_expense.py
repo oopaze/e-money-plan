@@ -1,7 +1,8 @@
 from marshmallow import Schema, fields
 
-from ....common.fields import Enum, Money
+from ....common.fields import Enum, Money, Related
 from ....entities import Expense
+from ...profile.repositories.profile import profile_repository
 
 
 class UpdateExpenseSchema(Schema):
@@ -13,3 +14,4 @@ class UpdateExpenseSchema(Schema):
     status = Enum(enum=Expense.ExpenseStatus, required=False)
     paid = fields.Boolean(required=False)
     is_mine = fields.Boolean(required=False)
+    profile_id = Related(required=True, repository=profile_repository)

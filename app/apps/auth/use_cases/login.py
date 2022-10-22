@@ -1,9 +1,13 @@
 from ....common.utils.generate_token import create_auth_tokens
 from ....common.utils.response import error_response, success_response
 from ....common.utils.use_case import UseCase
+from ...profile.repositories.profile import ProfileRepository
 
 
 class LoginUseCase(UseCase):
+    def set_repository(self, repository):
+        self.repository: ProfileRepository = repository
+
     def execute(self, payload):
         if self.validation_schema.validate(payload):
             return error_response("Credenciais inválidas", "message", 401)

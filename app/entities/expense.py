@@ -17,7 +17,6 @@ class Expense(db.Model, NumericIdModel, TimeStampedModel):
     value = sa.Column(sa.Numeric(14, 2))
     name = sa.Column(sa.String())
     color = sa.Column(sa.String(40))
-    total = sa.Column(sa.Numeric(14, 2))
     due_date = sa.Column(sa.Date())
     status = sa.Column(sa.Enum(ExpenseStatus))
     paid = sa.Column(sa.Boolean)
@@ -31,7 +30,6 @@ class Expense(db.Model, NumericIdModel, TimeStampedModel):
         value,
         name,
         color,
-        total,
         due_date,
         profile_id,
         is_mine=True,
@@ -41,8 +39,7 @@ class Expense(db.Model, NumericIdModel, TimeStampedModel):
         self.value = Decimal(value)
         self.name = name
         self.color = color
-        self.total = Decimal(total)
-        self.due_date = datetime.strptime(due_date, "%x")
+        self.due_date = datetime.strptime(due_date, "%d/%m/%Y")
         self.profile_id = profile_id
         self.paid = paid
         self.status = status
@@ -50,4 +47,4 @@ class Expense(db.Model, NumericIdModel, TimeStampedModel):
 
     @property
     def percent(self):
-        return (self.value * 100) / self.total
+        return (self.value * 100) / self.profile.salary

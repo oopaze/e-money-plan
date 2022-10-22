@@ -15,8 +15,9 @@ class CreateExpenseSchema(Schema):
     color = fields.String(
         required=True, allow_none=False, error_messages=default_error_messages
     )
-    total = Money(required=True)
-    due_date = fields.Date("%x", required=True, error_messages=default_error_messages)
+    due_date = fields.Date(
+        "%d/%m/%Y", required=True, error_messages=default_error_messages
+    )
     status = Enum(enum=Expense.ExpenseStatus)
     paid = fields.Boolean(required=True, error_messages=default_error_messages)
     is_mine = fields.Boolean(required=True, error_messages=default_error_messages)

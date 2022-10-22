@@ -13,7 +13,7 @@ class UseCase(ABC):
         self.validation_schema: Schema = validation_schema
 
     def set_repository(self, repository: Repository):
-        self.repository: Repository = Repository
+        self.repository: Repository = repository
 
     @abstractmethod
     def execute(self, payload=None, id=None):

@@ -16,5 +16,5 @@ class UseCase(ABC):
         self.repository: Repository = repository
 
     @abstractmethod
-    def execute(self, payload=None, id=None):
+    def execute(self, payload=None, id=None, filters=None):
         raise NotImplementedError("'handle' should be implemented")

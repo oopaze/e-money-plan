@@ -1,3 +1,5 @@
+from sqlalchemy import inspect
+
 from ...extensions.database_extension import db
 from ..exceptions.does_not_exist import DoesNotExist
 
@@ -9,6 +11,9 @@ class Repository:
 
     def all(self):
         return self.entity.query.all()
+
+    def filter_list(self, *args):
+        return self.entity.query.filter(*args).all()
 
     def filter(self, assertion):
         return self.entity.query.filter(assertion)
@@ -70,3 +75,13 @@ class Repository:
 
     def list_by(self, filters):
         return self.filter_by(filters).all()
+
+    def entity_has_column(self, attribute_name):
+        return attribute_name in inspect(self.entity).mapper.column_attrs
+
+    def get_entity_attribute(self, attribute_name):
+        return (
+            getattr(self.entity, attribute_name)
+            if self.entity_has_column(attribute_name)
+            else None
+        )

@@ -21,5 +21,4 @@ class ListExpensiesUseCase(UseCase):
         try:
             return self.filter_handler.execute(filters)
         except (JSONDecodeError, TypeError) as e:
-            print(e)
             return self.repository.get_all_expenses_from_profile(get_jwt_identity())

@@ -15,6 +15,9 @@ migrate:
 upgrade:
 	$(env) flask db upgrade
 
+install:
+	$(python) -m pip install -r ./.devops/requirements/dev-requirements.txt
+
 setup_server_db: 
 	flask db stamp head
 	flask db migrate

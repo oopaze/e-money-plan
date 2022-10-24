@@ -1,5 +1,5 @@
 from app.entities import Expense
-from marshmallow.fields import Enum
+from marshmallow.fields import Date, Enum
 from marshmallow_sqlalchemy.schema import SQLAlchemyAutoSchema
 
 
@@ -9,3 +9,4 @@ class ShowExpenseSchema(SQLAlchemyAutoSchema):
         fields = ("id", "value", "name", "color", "due_date", "paid", "status", "is_mine")
 
     status = Enum(enum=Expense.ExpenseStatus)
+    due_date = Date("%d/%m/%Y")

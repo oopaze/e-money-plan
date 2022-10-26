@@ -8,9 +8,18 @@ class ExpenseRepository(Repository):
         return self.filter_by({"profile_id": profile_id}).all()
 
     def get_expense(self, id: int, profile_id: int):
-        return self.filter_one(
-            self.entity.id == id and self.entity.profile_id == profile_id
-        )
+        return self.filter_by({"id": id, "profile_id": profile_id}).one()
+
+    def update(self, identity, payload, commit=True):
+        instance = self.get_expense(identity, payload["profile_id"])
+
+        for key, value in payload.items():
+            setattr(instance, key, value)
+
+        if commit:
+            self.db.session.commit()
+
+        return instance
 
     def delete(self, identity: int, profile_id: int, commit=True):
         instance = self.get(identity)

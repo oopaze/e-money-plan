@@ -1,3 +1,5 @@
+from json import loads
+
 from ..utils.repository import Repository
 
 
@@ -9,7 +11,7 @@ class Filters:
         "gt": lambda attribute, value: attribute > value,
         "eq": lambda attribute, value: attribute == value,
         "df": lambda attribute, value: attribute != value,
-        "in": lambda attribute, value: attribute.in_(value),
+        "in": lambda attribute, value: attribute.in_(loads(value)),
     }
 
     def __init__(self, repository):

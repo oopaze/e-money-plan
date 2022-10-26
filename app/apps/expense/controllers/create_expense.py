@@ -8,7 +8,6 @@ from ..use_cases.create_expense import CreateExpenseUseCase
 
 create_expense_bp = Blueprint("create_expense", __name__)
 
-
 @create_expense_bp.route("/", methods=["POST"])
 @jwt_required()
 def create_expense():

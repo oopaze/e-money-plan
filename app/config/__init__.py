@@ -9,6 +9,6 @@ class BaseConfig:
     JSON_SORT_KEYS = False
     BASE_DIR = Path(__name__).resolve().parent
 
-    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=1)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
     JWT_ERROR_MESSAGE_KEY = "message"

@@ -14,7 +14,7 @@ class CreateProfileUseCase(UseCase):
     def handle_success(self, payload):
         instance = self.repository.create(payload)
         dumped_instance = self.output_schema.dump(instance)
-        return self.handle_response(dumped_instance, create_auth_tokens(id))
+        return self.handle_response(dumped_instance, create_auth_tokens(instance.id))
 
     def handle_response(self, data, token_data):
         response = {}

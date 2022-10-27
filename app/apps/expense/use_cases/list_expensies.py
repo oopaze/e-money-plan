@@ -21,7 +21,6 @@ class ListExpensiesUseCase(UseCase):
         try:
             filters = dict(filters)
             filters["profile_id__eq"] = get_jwt_identity()
-            __import__("ipdb").set_trace()
             return self.filter_handler.execute(filters)
         except (JSONDecodeError, TypeError):
             return self.repository.get_all_expenses_from_profile(get_jwt_identity())

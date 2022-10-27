@@ -19,6 +19,7 @@ class ListExpensiesUseCase(UseCase):
 
     def _handle_filters(self, filters):
         try:
+            filters = dict(filters)
             filters["profile_id"] = get_jwt_identity()
             return self.filter_handler.execute(filters)
         except (JSONDecodeError, TypeError):
